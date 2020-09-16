@@ -1,0 +1,11 @@
+/zeromq-*.tar.*
+/zeromq-*.src.rpm
+/zeromq-*.*.*/
+/clog
+.build-*.*.log
+/noarch/
+/x86_64/
+/i?86/
+/libzmq-?.?.?/
+/tarballs/
+/libzmq-?.?.?.tar.gz
