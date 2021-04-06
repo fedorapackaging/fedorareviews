@@ -1,0 +1,25 @@
+From 40e5bcd594b01f9b7091de07f9efc4567cc1ac40 Mon Sep 17 00:00:00 2001
+From: Thomas Rodgers <rodgert@appliantology.com>
+Date: Tue, 2 Feb 2021 18:15:30 -0800
+Subject: [PATCH] Apply post 1.75.0 change from upstream
+
+---
+ tools/build/src/engine/startup.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/build/src/engine/startup.cpp b/tools/build/src/engine/startup.cpp
+index f58625408..a7659bb50 100644
+--- a/tools/build/src/engine/startup.cpp
++++ b/tools/build/src/engine/startup.cpp
+@@ -195,7 +195,7 @@ bool b2::startup::bootstrap(FRAME *frame)
+     {
+         const std::string path{
+             b2::paths::normalize(
+-                b2_exe_path + "/../../share/boost-build/" + boost_build_jam)};
++                b2_exe_path + "/../../share/boost-build/src/kernel/" + boost_build_jam)};
+         if (b2::filesys::is_file(path))
+             b2_file_path = path;
+     }
+-- 
+2.26.2
+

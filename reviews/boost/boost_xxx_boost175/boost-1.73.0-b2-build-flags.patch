@@ -1,0 +1,11 @@
+--- boost_1_73_0/tools/build/src/engine/build.sh~	2020-04-25 17:09:03.159419899 +0100
++++ boost_1_73_0/tools/build/src/engine/build.sh	2020-04-25 17:11:35.085907844 +0100
+@@ -233,7 +233,7 @@
+ 
+         *)
+         B2_CXX="${CXX} -x c++ -std=c++11"
+-        B2_CXXFLAGS_RELEASE="-O2 -s"
++        B2_CXXFLAGS_RELEASE="${RPM_OPT_FLAGS} ${RPM_LD_FLAGS}"
+         B2_CXXFLAGS_DEBUG="-O0 -g"
+         esac
+     ;;
