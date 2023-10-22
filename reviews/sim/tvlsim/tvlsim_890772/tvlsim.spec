@@ -105,7 +105,7 @@ rm -f %{buildroot}%{_docdir}/%{name}/html/installdox
 rm -f %{buildroot}%{_docdir}/%{name}/{NEWS,README.md,AUTHORS}
 
 %check
-#ctest
+%ctest
 
 
 %files
