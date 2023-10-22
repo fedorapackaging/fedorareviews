@@ -14,6 +14,7 @@ BuildRequires:  cmake
 BuildRequires:  boost-devel
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  zeromq-devel
+BuildRequires:  cppzmq-devel
 BuildRequires:  soci-mysql-devel
 BuildRequires:  soci-sqlite3-devel
 BuildRequires:  pkgconfig(stdair)
