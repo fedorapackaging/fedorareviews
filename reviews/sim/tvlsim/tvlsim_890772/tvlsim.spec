@@ -1,38 +1,38 @@
 #
 Name:           tvlsim
 Version:        1.01.6
-Release:        1%{?dist}
+Release:        %autorelease
 
 Summary:        Travel Market Simulator
 
 License:        LGPLv2+
 URL:            https://github.com/airsim/%{name}
-Source0:        %{url}/archive/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  boost-devel
-BuildRequires:  readline-devel
-BuildRequires:  sevmgr-devel
+BuildRequires:  pkgconfig(readline)
+BuildRequires:  zeromq-devel
 BuildRequires:  soci-mysql-devel
 BuildRequires:  soci-sqlite3-devel
-BuildRequires:  stdair-devel
-BuildRequires:  airrac-devel
-BuildRequires:  rmol-devel
-BuildRequires:  sevmgr-devel
-BuildRequires:  airtsp-devel
-BuildRequires:  simfqt-devel
-BuildRequires:  airinv-devel
-BuildRequires:  simcrs-devel
-BuildRequires:  trademgen-devel
-BuildRequires:  travelccm-devel
+BuildRequires:  pkgconfig(stdair)
+BuildRequires:  pkgconfig(airrac)
+BuildRequires:  pkgconfig(rmol)
+BuildRequires:  pkgconfig(sevmgr)
+BuildRequires:  pkgconfig(airtsp)
+BuildRequires:  pkgconfig(simfqt)
+BuildRequires:  pkgconfig(airinv)
+BuildRequires:  pkgconfig(simcrs)
+BuildRequires:  pkgconfig(trademgen)
+BuildRequires:  pkgconfig(travelccm)
 
 %description
 The Travel Market Simulator project aims at providing reference implementation,
 mainly in C++, of a travel market simulator, focusing on revenue management (RM)
 for airlines. It is intended to be used for applied research activities only:
 it is by no way intended to be used by production systems. It is a new breed of
-software and aims to become the new generation PODS (http://podsresearch.com/),
+software and aims to become the new generation PODS (https://podsresearch.com/),
 which was instrumental in the inception of the Travel Market Simulator project.
 
 Over a dozen components have been implemented and are fully functional,
@@ -44,16 +44,16 @@ revenue accounting (RA).
 
 The Travel Market Simulator can be used in either batch or hosted mode.
 It is the main component of the Travel Market Simulator:
-http://www.travel-market-simulator.com
+https://www.travel-market-simulator.com
 
 %{name} makes an extensive use of existing open-source libraries for
 increased functionality, speed and accuracy. In particular the
-Boost (C++ Standard Extensions: http://www.boost.org) library is used.
+Boost (C++ Standard Extensions: https://www.boost.org) libraries are used.
 
 The %{name} component itself aims at providing a clean API and a simple
 implementation, as a C++ library, of a full travel market simulator,
 focusing on revenue management (RM) for airlines. That library uses
-the Standard Airline IT C++ object model (http://sf.net/projects/stdair).
+the Standard Airline IT C++ object model (https://github.com/airsim/stdair).
 
 Install the %{name} package if you need a library of basic C++ objects
 for airline-related travel market simulation.
@@ -79,12 +79,11 @@ BuildRequires:  ghostscript
 %description    doc
 This package contains HTML pages, as well as a PDF reference manual,
 for %{name}. All that documentation is generated thanks to Doxygen
-(http://doxygen.org). The content is the same as what can be browsed
-online (http://%{name}.org).
+(https://doxygen.org). The content is the same as what can be browsed
+online (https://%{name}.org).
 
 %prep
-%autosetup -n %{name}-%{version} 
-
+%autosetup
 
 %build
 %cmake
@@ -92,6 +91,10 @@ online (http://%{name}.org).
 
 %install
 %cmake_install
+
+# Rename the simulate binary
+mv %{buildroot}%{_bindir}/simulate %{buildroot}%{_bindir}/%{name}_simulate
+mv %{buildroot}%{_mandir}/man1/simulate.1 %{buildroot}%{_mandir}/man1/%{name}_simulate.1
 
 # Removed the Doxygen installer
 rm -f %{buildroot}%{_docdir}/%{name}/html/installdox
@@ -105,16 +108,18 @@ rm -f %{buildroot}%{_docdir}/%{name}/{NEWS,README.md,AUTHORS}
 
 
 %files
-%doc AUTHORS ChangeLog COPYING NEWS README.md
+%doc AUTHORS ChangeLog NEWS README.md
+%license COPYING
 %{_bindir}/%{name}
-%{_bindir}/simulate
+%{_bindir}/%{name}_simulate
 %{_bindir}/TvlSimServer
 %{_libdir}/lib%{name}.so.*
 %{_mandir}/man1/%{name}.1.*
-%{_mandir}/man1/simulate.1.*
+%{_mandir}/man1/%{name}_simulate.1.*
 %{_mandir}/man1/TvlSimServer.1.*
 
 %files devel
+%license COPYING
 %{_includedir}/%{name}
 %{_bindir}/%{name}-config
 %{_libdir}/lib%{name}.so
@@ -127,7 +132,7 @@ rm -f %{buildroot}%{_docdir}/%{name}/{NEWS,README.md,AUTHORS}
 
 %files doc
 %doc %{_docdir}/%{name}/html
-%doc COPYING
+%license COPYING
 
 %changelog
 * Sun Oct 22 2023 Denis Arnaud <denis.arnaud_fedora at m4x.org> - 1.01.6-1
