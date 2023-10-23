@@ -136,8 +136,5 @@ rm -f %{buildroot}%{_docdir}/%{name}/{NEWS,README.md,AUTHORS}
 %license COPYING
 
 %changelog
-* Sun Oct 22 2023 Denis Arnaud <denis.arnaud_fedora at m4x.org> - 1.01.6-1
-- Upstream upgrade
-
 %autochangelog
 
