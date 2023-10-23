@@ -5,7 +5,7 @@ Release:        %autorelease
 
 Summary:        Travel Market Simulator
 
-License:        LGPLv2+
+License:        LGPL-2.1-or-later
 URL:            https://github.com/airsim/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
