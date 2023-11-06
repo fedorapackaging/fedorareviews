@@ -14,7 +14,7 @@ BuildRequires:  cmake
 BuildRequires:  boost-devel
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(libzmq)
-BuildRequires:  cppzmq-devel
+BuildRequires:  pkgconfig(cppzmq)
 BuildRequires:  soci-mysql-devel
 BuildRequires:  soci-sqlite3-devel
 BuildRequires:  pkgconfig(stdair)
@@ -132,7 +132,7 @@ rm -f %{buildroot}%{_docdir}/%{name}/{NEWS,README.md,AUTHORS}
 %{_mandir}/man3/%{name}-library.3.*
 
 %files doc
-%doc %{_docdir}/%{name}/html
+%doc %{_docdir}/%{name}/
 %license COPYING
 
 %changelog
