@@ -7,7 +7,7 @@ This directory gives the RPM specification file to package `boost1.73`.
 
 Right now, the RPM specification is exactly the same as on Rawhide. It still
 needs to be altered to embed the version into the package name, so as not
-to collide with the pristine Boost (1.69) on RHEL/CentOS 8. 
+to collide with the pristine Boost (1.66) on RHEL/CentOS 8. 
 
 ## See also
 * [Bugzilla #1828059 - Boost1.73 on EPEL](https://bugzilla.redhat.com/show_bug.cgi?id=1828059)
